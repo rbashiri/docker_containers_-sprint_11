@@ -30,11 +30,16 @@ Clean method you can reuse
 
 # Step 2: Add requirements manually
 ##  Export professional requirements files
+Keep only top-level packages (recommended)
+Run:
+python -m pip install pip-chill
+pip-chill > requirements.in
+This avoids dumping every transitive dependency.
 
-    pip install pip-chill
-    pip-chill > requirements.in
-    pip freeze > requirements.txt
-    pip freeze > [requirements.txt](http://_vscodecontentref_/1)
+Generate from imports instead of environment
+Run:
+python -m pip install pipreqs
+pipreqs . --force
 
 4- Verify dependency health
 pip check
