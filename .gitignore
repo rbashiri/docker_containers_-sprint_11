@@ -1,4 +1,5 @@
 .venv/
+.venv-clean/
 # Python
 __pycache__/
 *.py[cod]
