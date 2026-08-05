@@ -1,0 +1,29 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: diabetes-api-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: diabetes-api
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+
+
+# scaleTargetRef — Which deployment to scale (our diabetes-api)
+# minReplicas: 2 — Never go below 2 Pods (always have backup)
+# # maxReplicas: 10 — Never go above 10 Pods (cost control)
+# metrics — What to measure
+# cpu — Watch CPU usage
+# averageUtilization: 50 — Try to keep CPU around 50%
+# The logic:
+# If average CPU > 50% → Add more Pods
+# If average CPU < 50% → Remove Pods (down to minimum of 2
