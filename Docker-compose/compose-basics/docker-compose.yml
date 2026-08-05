@@ -1,5 +1,18 @@
-version: "3.8"
-
 services:
-hello:
-image: hello-world
+  database:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: myapp
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+
+  app:
+    build: ./app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - database
+    environment:
+      - FLASK_ENV=development

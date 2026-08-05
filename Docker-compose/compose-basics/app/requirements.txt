@@ -1,0 +1,5 @@
+# Role: Let Python connect to PostgreSQL
+psycopg2-binary==2.9.7
+
+# Role: Create the web application and routes
+flask==2.3.3
