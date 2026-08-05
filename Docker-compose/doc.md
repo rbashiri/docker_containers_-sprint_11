@@ -1,0 +1,2 @@
+# What is Docker Compose?
+Docker Compose is like the conductor leading an orchestra. Instead of individually telling each musician (container) when to play, the conductor (Docker Compose) coordinates them all using sheet music (a YAML file).
